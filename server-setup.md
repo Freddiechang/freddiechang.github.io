@@ -19,7 +19,7 @@ while connecting to upstream, client: ******, server: #URL, request: "GET / HTTP
 upstream: "http://127.0.0.1:#PORT/", host: "#URL"
 ```   
 再检查nps日志，发现没有来自#URL的访问记录和http请求，说明问题出在nginx和nps的连接上。参考[这个问题](https://stackoverflow.com/questions/23948527/13-permission-denied-while-connecting-to-upstreamnginx)，
-可以知道是因为SELinux。sudo运行以下命令即可：   
+可以知道是因为SELinux阻止了连接。sudo运行以下命令即可：   
 ```
 sudo setsebool -P httpd_can_network_connect 1
 ```  
