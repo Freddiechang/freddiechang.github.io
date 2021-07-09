@@ -31,4 +31,22 @@ upstream: "http://127.0.0.1:#PORT/", host: "#URL"
 ```
 sudo setsebool -P httpd_can_network_connect 1
 ```  
-至此设置完成，可以正常访问。
+至此设置完成，可以正常访问。    
+为了方便直接通过网站访问下载的内容，可以在Nginx默认目录html下设置软链接到下载文件夹。此时因为SELinux默认阻止Nginx访问默认文件夹以外的文件，直接通过网站访问会出现403错误，同时Nginx日志
+会出现   
+```
+13: Permission denied.
+```   
+错误。参考[这个问题](https://stackoverflow.com/questions/22586166/why-does-nginx-return-a-403-even-though-all-permissions-are-set-properly)，先暂时关闭SELinux以确定问题：   
+```
+setenforce Permissive
+```   
+然后重启Nginx，如果问题解决，重新开启SELinux：   
+```
+setenforce 1
+```   
+然后给目标目录加上一个label：   
+```
+chcon -Rt httpd_sys_content_t /path/to/www
+```   
+问题解决。
