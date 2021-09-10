@@ -1,6 +1,6 @@
 # 设置NPS   
 按照官网文档安装并配置[nps](https://ehang-io.github.io/nps/#/?id=nps)。首先配置好SSH转发（TCP隧道到本地22端口），然后设置域名解析到本地http服务端口:   
-![](https://assets.freddieonfire.tk/nps_url_parse.png)   
+![](https://assets.freddie.party/nps_url_parse.png)   
 设置好nps的http端口（nps通过这个端口提供本地http服务）。用到的端口及说明：   
 ```
 24615: web管理界面
