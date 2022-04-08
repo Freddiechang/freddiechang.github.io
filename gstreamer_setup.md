@@ -7,7 +7,7 @@ apt install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-pl
 ## Use conda to install dependencies
 See [here](https://lifestyletransfer.com/how-to-install-gstreamer-python-bindings/).
 ```
-conda install -c conda-forge pyobject gobject-introspection gtk3 gst-python gst-plugins-base gst-plugins-good
+conda install -c conda-forge pygobject gobject-introspection gtk3 gst-python gst-plugins-base gst-plugins-good
 ```
 ## Configure Gstreamer plugin lib path
 See [here](https://stackoverflow.com/questions/54097034/gst-good-plugins-installed-but-no-element-autovideosink).   
